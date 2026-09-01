@@ -35,7 +35,7 @@ protocol and manifests in the paper):
 | SIFT-1M | 0.9991 R@10 @ ~1,000 qps (laptop) | HNSW 0.9991 @ 6,140 |
 | GloVe-1.2M | **0.9978** @ 52 (laptop) | HNSW **saturates at 0.9865** |
 | Deep-100M | **0.9991** @ 268 (64-thread server) | HNSW saturates 0.9989 @ 540; SPANN 0.9989 @ 47 |
-| Deep-100M, disk | 0.998 @ 20 qps with **1 GB resident** | DiskANN needs 12 GB |
+| Deep-100M, disk | 0.998 @ 20 qps with **1 GB resident** | DiskANN 0.9984 @ 568 qps, needs 12 GB (OOM < 9.6 GB) |
 
 The dial (`k_s`) is monotone — scan indexes fail only by budget, never
 by structure. Build is `n` independent router searches (minutes at
