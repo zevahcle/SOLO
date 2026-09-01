@@ -28,18 +28,40 @@ fixed seed at any thread count.
 ## Headline measurements
 
 Same machines, same queries, same exact ground truth (details,
-protocol and manifests in the paper):
+protocol and manifests in the paper; raw run manifests in
+`results/`):
 
 | dataset | SOLO | strongest baselines |
 |---|---|---|
 | SIFT-1M | 0.9991 R@10 @ ~1,000 qps (laptop) | HNSW 0.9991 @ 6,140 |
 | GloVe-1.2M | **0.9978** @ 52 (laptop) | HNSW **saturates at 0.9865** |
-| Deep-100M | **0.9991** @ 268 (64-thread server) | HNSW saturates 0.9989 @ 540; SPANN 0.9989 @ 47 |
-| Deep-100M, disk | 0.998 @ 20 qps with **1 GB resident** | DiskANN 0.9984 @ 568 qps, needs 12 GB (OOM < 9.6 GB) |
+| Deep-100M (RAM) | **0.9991** @ 268 (64-thread server) | HNSW saturates 0.9989 @ 540; SPANN 0.9996 @ 24 |
+| Deep-100M (disk) | 0.998 @ 20 qps with **1 GB resident** | DiskANN 0.9984 @ 568 qps, needs 12 GB (OOM < 9.6 GB) |
 
-The dial (`k_s`) is monotone — scan indexes fail only by budget, never
-by structure. Build is `n` independent router searches (minutes at
-10^7–10^8); SPANN's build on the same 100M data took 57.5 h.
+Three properties the baselines don't have, all measured:
+
+- **A monotone dial.** Recall never saturates short of scanning
+  everything; below their ceilings, graphs are faster — above them
+  they have no operating point at any budget.
+- **A build that is barely a build.** `n` independent router searches
+  — minutes at 10^7–10^8, deterministic at any thread count. SPANN's
+  build on the same 100M data took 57.5 h (48 h of it k-means head
+  selection); HNSW/GRAFT quality builds take hours.
+- **Quantization as a screen, never a scorer.** SOLO's 8-bit screen
+  with exact refine is measurably lossless at every operating point;
+  SPANN served natively in Int8 on the *identical* 8-bit grid — 
+  quantized distances as the final scorer — saturates at 0.9561 on
+  the same data.
+
+## The certificate
+
+`SOLO.coverage(Q, gt, b, ks)` computes, from stored signatures alone,
+the probability that a true neighbor shares a routed term — which
+**is** the recall of scan-only serving (up to distance ties). You can
+certify a deployment's recall for your own workload before serving a
+single query, price degraded modes (smaller `k_s` under load), and —
+because objects are replicated across `b` lists — compute the exact
+recall you'd retain if a shard went down.
 
 ## Install
 
