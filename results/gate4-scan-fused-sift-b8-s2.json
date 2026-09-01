@@ -1,0 +1,82 @@
+{
+ "timestamp": "2026-08-27T22:29:33-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "b=8, FUSED C++ serve (verify_topk_lists)",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "sift",
+  "n": 1000000,
+  "d": 128,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 8,
+  "inner": "graft",
+  "ks_grid": [
+   16,
+   32,
+   64,
+   128
+  ],
+  "reps": 3,
+  "threads": "all",
+  "queries": 10000
+ },
+ "seed": 2,
+ "results": {
+  "rows": [
+   {
+    "k_s": 16,
+    "recall": 0.9569,
+    "qps": 5490.6,
+    "qps_min": 5450.7,
+    "qps_max": 7639.5,
+    "evals_mean": 8229
+   },
+   {
+    "k_s": 32,
+    "recall": 0.9876,
+    "qps": 3008.1,
+    "qps_min": 2876.1,
+    "qps_max": 3023.4,
+    "evals_mean": 14585
+   },
+   {
+    "k_s": 64,
+    "recall": 0.997,
+    "qps": 1599.9,
+    "qps_min": 1566.3,
+    "qps_max": 1629.1,
+    "evals_mean": 25281
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9991,
+    "qps": 925.1,
+    "qps_min": 918.7,
+    "qps_max": 930.6,
+    "evals_mean": 42910
+   }
+  ]
+ },
+ "macros": {
+  "solo/sift/fused-recall@ks16-s2": 0.9569,
+  "solo/sift/fused-recall@ks32-s2": 0.9876,
+  "solo/sift/fused-recall@ks64-s2": 0.997,
+  "solo/sift/fused-recall@ks128-s2": 0.9991,
+  "solo/sift/fused-qps@ks16-s2": 5490.6,
+  "solo/sift/fused-qps@ks32-s2": 3008.1,
+  "solo/sift/fused-qps@ks64-s2": 1599.9,
+  "solo/sift/fused-qps@ks128-s2": 925.1
+ },
+ "notes": "Phase A rerun with the fused serve kernel."
+}

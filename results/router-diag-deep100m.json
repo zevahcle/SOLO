@@ -1,0 +1,68 @@
+{
+ "timestamp": "2026-08-28T08:52:07-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "router diagnostic",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-100M",
+  "n": 100000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "grid": {
+   "16": [
+    256,
+    384,
+    512
+   ],
+   "32": [
+    128,
+    256
+   ]
+  },
+  "routers": [
+   "graft ef=4ks",
+   "graft ef=8ks",
+   "exact (GEMM top-512)"
+  ],
+  "queries": 10000
+ },
+ "seed": 1,
+ "results": {
+  "router_overlap@ks256": {
+   "ef4": 0.9997,
+   "ef8": 0.9999
+  },
+  "router_overlap@ks512": {
+   "ef4": 0.9992,
+   "ef8": 0.9999
+  },
+  "recall-b16-ks256-graft-ef4": 0.9982,
+  "recall-b16-ks384-graft-ef4": 0.9988,
+  "recall-b16-ks512-graft-ef4": 0.999,
+  "recall-b16-ks256-graft-ef8": 0.9982,
+  "recall-b16-ks384-graft-ef8": 0.9988,
+  "recall-b16-ks512-graft-ef8": 0.999,
+  "recall-b16-ks256-exact": 0.9982,
+  "recall-b16-ks384-exact": 0.9988,
+  "recall-b16-ks512-exact": 0.999,
+  "recall-b32-ks128-graft-ef4": 0.9983,
+  "recall-b32-ks256-graft-ef4": 0.9991,
+  "recall-b32-ks128-graft-ef8": 0.9982,
+  "recall-b32-ks256-graft-ef8": 0.9991,
+  "recall-b32-ks128-exact": 0.9982,
+  "recall-b32-ks256-exact": 0.9991
+ },
+ "macros": {},
+ "notes": "the paper: attribute the 10M->100M recall drop at fixed (b,ks) to router loss vs geometry."
+}

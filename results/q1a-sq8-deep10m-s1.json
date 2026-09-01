@@ -1,0 +1,199 @@
+{
+ "timestamp": "2026-08-28T10:59:06-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "SQ8 screen + f32 refine (global affine, keep-R)",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-10M",
+  "n": 10000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "grid": {
+   "8": [
+    128,
+    256
+   ],
+   "16": [
+    128,
+    256
+   ]
+  },
+  "R_grid": [
+   40,
+   100,
+   300
+  ],
+  "reps": 3,
+  "threads": "all",
+  "queries": 10000,
+  "sq": {
+   "lo": -0.5883111953735352,
+   "hi": 0.5528671741485596,
+   "bits": 8
+  }
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "b": 8,
+    "k_s": 128,
+    "R": 40,
+    "recall": 0.9952,
+    "qps": 3787.1,
+    "qps_min": 3616.2,
+    "qps_max": 3838.6,
+    "evals_mean": 50514
+   },
+   {
+    "b": 8,
+    "k_s": 128,
+    "R": 100,
+    "recall": 0.9952,
+    "qps": 3659.4,
+    "qps_min": 3637.9,
+    "qps_max": 3700.3,
+    "evals_mean": 50514
+   },
+   {
+    "b": 8,
+    "k_s": 128,
+    "R": 300,
+    "recall": 0.9952,
+    "qps": 3480.0,
+    "qps_min": 3475.6,
+    "qps_max": 3526.0,
+    "evals_mean": 50514
+   },
+   {
+    "b": 8,
+    "k_s": 256,
+    "R": 40,
+    "recall": 0.9982,
+    "qps": 1841.7,
+    "qps_min": 1793.0,
+    "qps_max": 1877.9,
+    "evals_mean": 86810
+   },
+   {
+    "b": 8,
+    "k_s": 256,
+    "R": 100,
+    "recall": 0.9982,
+    "qps": 1753.9,
+    "qps_min": 1730.5,
+    "qps_max": 1755.9,
+    "evals_mean": 86810
+   },
+   {
+    "b": 8,
+    "k_s": 256,
+    "R": 300,
+    "recall": 0.9982,
+    "qps": 1595.5,
+    "qps_min": 1487.4,
+    "qps_max": 1671.6,
+    "evals_mean": 86810
+   },
+   {
+    "b": 16,
+    "k_s": 128,
+    "R": 40,
+    "recall": 0.9985,
+    "qps": 2100.7,
+    "qps_min": 1947.4,
+    "qps_max": 2151.2,
+    "evals_mean": 81012
+   },
+   {
+    "b": 16,
+    "k_s": 128,
+    "R": 100,
+    "recall": 0.9985,
+    "qps": 1884.0,
+    "qps_min": 1733.2,
+    "qps_max": 1915.1,
+    "evals_mean": 81012
+   },
+   {
+    "b": 16,
+    "k_s": 128,
+    "R": 300,
+    "recall": 0.9985,
+    "qps": 1600.7,
+    "qps_min": 1543.8,
+    "qps_max": 1843.0,
+    "evals_mean": 81012
+   },
+   {
+    "b": 16,
+    "k_s": 256,
+    "R": 40,
+    "recall": 0.9994,
+    "qps": 823.8,
+    "qps_min": 730.2,
+    "qps_max": 927.0,
+    "evals_mean": 134305
+   },
+   {
+    "b": 16,
+    "k_s": 256,
+    "R": 100,
+    "recall": 0.9994,
+    "qps": 685.3,
+    "qps_min": 567.2,
+    "qps_max": 733.3,
+    "evals_mean": 134305
+   },
+   {
+    "b": 16,
+    "k_s": 256,
+    "R": 300,
+    "recall": 0.9994,
+    "qps": 777.3,
+    "qps_min": 761.2,
+    "qps_max": 784.0,
+    "evals_mean": 134305
+   }
+  ],
+  "f32_reference": "b=8/ks=128: 0.9952 @ 1,518 (bitmap kernel)"
+ },
+ "macros": {
+  "solo/deep10m/sq8-recall-b8ks128R40": 0.9952,
+  "solo/deep10m/sq8-recall-b8ks128R100": 0.9952,
+  "solo/deep10m/sq8-recall-b8ks128R300": 0.9952,
+  "solo/deep10m/sq8-recall-b8ks256R40": 0.9982,
+  "solo/deep10m/sq8-recall-b8ks256R100": 0.9982,
+  "solo/deep10m/sq8-recall-b8ks256R300": 0.9982,
+  "solo/deep10m/sq8-recall-b16ks128R40": 0.9985,
+  "solo/deep10m/sq8-recall-b16ks128R100": 0.9985,
+  "solo/deep10m/sq8-recall-b16ks128R300": 0.9985,
+  "solo/deep10m/sq8-recall-b16ks256R40": 0.9994,
+  "solo/deep10m/sq8-recall-b16ks256R100": 0.9994,
+  "solo/deep10m/sq8-recall-b16ks256R300": 0.9994,
+  "solo/deep10m/sq8-qps-b8ks128R40": 3787.1,
+  "solo/deep10m/sq8-qps-b8ks128R100": 3659.4,
+  "solo/deep10m/sq8-qps-b8ks128R300": 3480.0,
+  "solo/deep10m/sq8-qps-b8ks256R40": 1841.7,
+  "solo/deep10m/sq8-qps-b8ks256R100": 1753.9,
+  "solo/deep10m/sq8-qps-b8ks256R300": 1595.5,
+  "solo/deep10m/sq8-qps-b16ks128R40": 2100.7,
+  "solo/deep10m/sq8-qps-b16ks128R100": 1884.0,
+  "solo/deep10m/sq8-qps-b16ks128R300": 1600.7,
+  "solo/deep10m/sq8-qps-b16ks256R40": 823.8,
+  "solo/deep10m/sq8-qps-b16ks256R100": 685.3,
+  "solo/deep10m/sq8-qps-b16ks256R300": 777.3
+ },
+ "notes": "Q1a: scalar quantization chosen over PQ (author, 2026-08-28) - compute over footprint; screen near-lossless, refine exact."
+}

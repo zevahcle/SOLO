@@ -1,0 +1,86 @@
+{
+ "timestamp": "2026-08-28T08:23:19-0700",
+ "system": {
+  "name": "misi2-sim",
+  "variant": "depth-2 decomposition of hub lists (uniform design, the paper)",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "top_ks": 64,
+  "tau": 4096,
+  "alpha_local": 0.02,
+  "b_local": [
+   4,
+   8
+  ],
+  "ks_local": [
+   16,
+   32,
+   64
+  ],
+  "nq": 2000,
+  "assignment": "rank-b' (brute local GEMM)"
+ },
+ "seed": 1,
+ "results": {
+  "b4-ks16": {
+   "local_coverage": 0.9565,
+   "jmed_local": 3.0,
+   "leaf_cand_mean": 6919.886647254576,
+   "composed_est": 0.9896
+  },
+  "b4-ks32": {
+   "local_coverage": 0.9866,
+   "jmed_local": 4.0,
+   "leaf_cand_mean": 11842.52537437604,
+   "composed_est": 0.9901
+  },
+  "b4-ks64": {
+   "local_coverage": 0.9964,
+   "jmed_local": 4.0,
+   "leaf_cand_mean": 19166.69945923461,
+   "composed_est": 0.9902
+  },
+  "b8-ks16": {
+   "local_coverage": 0.9869,
+   "jmed_local": 5.0,
+   "leaf_cand_mean": 13375.930532445924,
+   "composed_est": 0.9901
+  },
+  "b8-ks32": {
+   "local_coverage": 0.9969,
+   "jmed_local": 7.0,
+   "leaf_cand_mean": 23243.824875207985,
+   "composed_est": 0.9903
+  },
+  "b8-ks64": {
+   "local_coverage": 0.9994,
+   "jmed_local": 8.0,
+   "leaf_cand_mean": 38066.2240016639,
+   "composed_est": 0.9903
+  }
+ },
+ "macros": {
+  "solo/glove/h1-cov-b4ks16": 0.9565,
+  "solo/glove/h1-cov-b4ks32": 0.9866,
+  "solo/glove/h1-cov-b4ks64": 0.9964,
+  "solo/glove/h1-cov-b8ks16": 0.9869,
+  "solo/glove/h1-cov-b8ks32": 0.9969,
+  "solo/glove/h1-cov-b8ks64": 0.9994
+ },
+ "notes": "experiment H1: does signature coverage survive inside hub lists? Composed estimate uses independence across lists (exp-2b convention; measured there to cost ~1e-3)."
+}

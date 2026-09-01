@@ -1,0 +1,84 @@
+{
+ "timestamp": "2026-08-27T15:09:27-0700",
+ "system": {
+  "name": "graft-fmt-v1",
+  "artifact": "graft-ann save/load_mmap",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "sift",
+  "n": 1000000,
+  "d": 128,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "list_params": {
+   "T": 8,
+   "harvest": 200
+  },
+  "router_params": {
+   "T": 16,
+   "harvest": 400
+  },
+  "seed": 1,
+  "format": "v1: 128B header + roots/ptr/idx/X, 64B-aligned, position-independent, mmap PROT_READ"
+ },
+ "seed": 1,
+ "results": {
+  "per_list": {
+   "n_lists": 100,
+   "list_size_mean": 5060.18,
+   "build_ms_mean": 92.72292880079476,
+   "save_ms_mean": 0.8828791408450343,
+   "load_us_mean": 42.74871898815036,
+   "load_us_p95": 48.64374204771593,
+   "first_query_us_mean": 315.12171000940725,
+   "steady_query_us_mean": 34.07574619632215,
+   "file_bytes_per_point": 575.8064530998973,
+   "speedup_load_vs_build": 2169.0223940159913
+  },
+  "router": [
+   {
+    "n": 20000,
+    "build_s": 0.64,
+    "save_s": 0.003,
+    "load_us": 50,
+    "first_200q_ms": 3.1,
+    "file_MB": 11.8,
+    "speedup": 12788
+   },
+   {
+    "n": 100000,
+    "build_s": 6.96,
+    "save_s": 0.02,
+    "load_us": 75,
+    "first_200q_ms": 9.3,
+    "file_MB": 60.2,
+    "speedup": 92664
+   },
+   {
+    "n": 500000,
+    "build_s": 54.69,
+    "save_s": 0.089,
+    "load_us": 90,
+    "first_200q_ms": 21.3,
+    "file_MB": 306.3,
+    "speedup": 604874
+   }
+  ],
+  "parity": "bitwise, asserted per list and per router scale"
+ },
+ "macros": {
+  "solo/gate3/list-load-us": 43,
+  "solo/gate3/router500k-speedup": 604874
+ },
+ "notes": "experiment 3: fast-loading format measured; warm-cache load (laptop). Cold-cache/server numbers to be added at the 10^6 prototype."
+}

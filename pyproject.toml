@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solo-index"
+version = "0.1.0"
+description = "SOLO (SOLOVINO): scan-only lists, one rule - a predictable-recall metric index"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Edgar Chavez"}]
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+# plus, from source (kernels + router):
+#   pip install git+https://github.com/zevahcle/graft-ann
+#   pip install git+https://github.com/zevahcle/MISIFU
+
+[tool.setuptools]
+packages = ["solo"]

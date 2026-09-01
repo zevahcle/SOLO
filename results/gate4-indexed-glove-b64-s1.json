@@ -1,0 +1,153 @@
+{
+ "timestamp": "2026-08-27T17:56:04-0700",
+ "system": {
+  "name": "misi2-indexed",
+  "variant": "hybrid tau=4096: packed graph lists + exact scan",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "inner": "graft",
+  "tau": 4096,
+  "graft_params": {
+   "T": 8,
+   "harvest": 200,
+   "seed": 1
+  },
+  "grid": [
+   [
+    64,
+    160
+   ],
+   [
+    64,
+    320
+   ],
+   [
+    128,
+    160
+   ],
+   [
+    128,
+    320
+   ]
+  ],
+  "reps": 3,
+  "threads": "all",
+  "queries": 10000,
+  "pack": {
+   "tau": 4096,
+   "seed": 1,
+   "alpha": 0.02,
+   "k_b": 64,
+   "graft_params": {
+    "T": 8,
+    "harvest": 200,
+    "seed": 1
+   },
+   "n": 1183514,
+   "m": 23670,
+   "n_big": 4837,
+   "mass_big": 39803361,
+   "sig_sha1": "69ffffba6c876b1d730a0cf4aae5a1e1336e6b13",
+   "build_s": 3475.8,
+   "build_dist_evals": 239485478671,
+   "graph_bytes": 4220993760,
+   "graph_bytes_per_indexed_point": 106.0
+  }
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 64,
+    "ef": 160,
+    "recall": 0.9869,
+    "qps": 94.1,
+    "qps_min": 89.4,
+    "qps_max": 94.5,
+    "stage_s": {
+     "prep": 0.02,
+     "beam": 48.74,
+     "gather": 33.24,
+     "verify": 27.44,
+     "merge": 0.54,
+     "route": 1.87
+    }
+   },
+   {
+    "k_s": 64,
+    "ef": 320,
+    "recall": 0.989,
+    "qps": 71.9,
+    "qps_min": 66.5,
+    "qps_max": 71.9,
+    "stage_s": {
+     "prep": 0.02,
+     "beam": 74.32,
+     "gather": 38.07,
+     "verify": 35.5,
+     "merge": 0.74,
+     "route": 1.65
+    }
+   },
+   {
+    "k_s": 128,
+    "ef": 160,
+    "recall": 0.9967,
+    "qps": 42.1,
+    "qps_min": 41.8,
+    "qps_max": 43.1,
+    "stage_s": {
+     "prep": 0.03,
+     "beam": 110.4,
+     "gather": 69.95,
+     "verify": 52.35,
+     "merge": 0.93,
+     "route": 3.85
+    }
+   },
+   {
+    "k_s": 128,
+    "ef": 320,
+    "recall": 0.9976,
+    "qps": 35.4,
+    "qps_min": 33.3,
+    "qps_max": 35.6,
+    "stage_s": {
+     "prep": 0.04,
+     "beam": 152.84,
+     "gather": 71.87,
+     "verify": 52.76,
+     "merge": 1.08,
+     "route": 4.02
+    }
+   }
+  ],
+  "note": "python orchestration (gather/merge) inside the timed loop; stage_s shows the split - the C++ serving path would remove gather/merge overhead"
+ },
+ "macros": {
+  "solo/glove/indexed-recall@ks64ef160": 0.9869,
+  "solo/glove/indexed-recall@ks64ef320": 0.989,
+  "solo/glove/indexed-recall@ks128ef160": 0.9967,
+  "solo/glove/indexed-recall@ks128ef320": 0.9976,
+  "solo/glove/indexed-qps@ks64ef160": 94.1,
+  "solo/glove/indexed-qps@ks64ef320": 71.9,
+  "solo/glove/indexed-qps@ks128ef160": 42.1,
+  "solo/glove/indexed-qps@ks128ef320": 35.4
+ },
+ "notes": "experiment 4 phase B: GloVe indexed regime end to end (hybrid)."
+}

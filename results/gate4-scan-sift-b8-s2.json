@@ -1,0 +1,78 @@
+{
+ "timestamp": "2026-08-27T15:31:44-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "bounded assignment b=8, verify-all",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "sift",
+  "n": 1000000,
+  "d": 128,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 8,
+  "inner": "graft",
+  "scoring": "count",
+  "C": 200000,
+  "reps": 3,
+  "threads": "all",
+  "ks_grid": [
+   16,
+   32,
+   64,
+   128
+  ],
+  "queries": 10000
+ },
+ "seed": 2,
+ "results": {
+  "rows": [
+   {
+    "k_s": 16,
+    "recall": 0.9569,
+    "qps": 4245.2,
+    "qps_min": 3483.0,
+    "qps_max": 4394.5
+   },
+   {
+    "k_s": 32,
+    "recall": 0.9876,
+    "qps": 2310.6,
+    "qps_min": 1814.1,
+    "qps_max": 2450.8
+   },
+   {
+    "k_s": 64,
+    "recall": 0.997,
+    "qps": 1310.0,
+    "qps_min": 1016.4,
+    "qps_max": 1372.7
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9991,
+    "qps": 573.0,
+    "qps_min": 545.9,
+    "qps_max": 768.3
+   }
+  ],
+  "build_s": 5.1,
+  "latency_ms_p50": 4.394,
+  "latency_ms_p95": 6.995,
+  "latency_at_ks": 64
+ },
+ "macros": {
+  "solo/sift/scan-recall@ks128-s2": 0.9991,
+  "solo/sift/scan-qps@ks128-s2": 573.0
+ },
+ "notes": "experiment 4 phase A: scan-regime prototype = misi engine at k_b=8, C past candidate count (verify-all). Recall == coverage(b, ks); no per-list indexes."
+}

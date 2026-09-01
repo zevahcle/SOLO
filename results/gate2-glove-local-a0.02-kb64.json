@@ -1,0 +1,134 @@
+{
+ "timestamp": "2026-08-27T13:55:34-0700",
+ "system": {
+  "name": "misi2-local",
+  "candidates": "graft/vp/brute",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "ks": 64,
+  "k": 10,
+  "npairs": 400,
+  "vp_pairs": 150,
+  "efs": [
+   10,
+   20,
+   40,
+   80,
+   160,
+   320
+  ],
+  "leaf": 32,
+  "graft_params": {
+   "T": 8,
+   "harvest": 200,
+   "seed": 1
+  },
+  "sampling": "query-driven (query, touched-list) pairs = size-biased"
+ },
+ "seed": 1,
+ "results": {
+  "pairs": 400,
+  "distinct_lists": 390,
+  "list_size_min": 492,
+  "list_size_max": 80582,
+  "graft": {
+   "10": {
+    "recall": 0.652,
+    "us_mean": 372.996049336507,
+    "us_p95": 1025.3002837998765,
+    "recall_by_bucket": [
+     0.7021,
+     0.6282,
+     0.5444
+    ]
+   },
+   "20": {
+    "recall": 0.78075,
+    "us_mean": 196.7661410162691,
+    "us_p95": 484.6062380238427,
+    "recall_by_bucket": [
+     0.8374,
+     0.7538,
+     0.6593
+    ]
+   },
+   "40": {
+    "recall": 0.8865000000000001,
+    "us_mean": 218.45860304892994,
+    "us_p95": 585.9478798811322,
+    "recall_by_bucket": [
+     0.9353,
+     0.866,
+     0.7741
+    ]
+   },
+   "80": {
+    "recall": 0.9535000000000001,
+    "us_mean": 205.50753091811202,
+    "us_p95": 586.1100959009472,
+    "recall_by_bucket": [
+     0.9858,
+     0.9474,
+     0.8574
+    ]
+   },
+   "160": {
+    "recall": 0.98575,
+    "us_mean": 250.0009653158486,
+    "us_p95": 621.5267407242206,
+    "recall_by_bucket": [
+     0.9989,
+     0.984,
+     0.9444
+    ]
+   },
+   "320": {
+    "recall": 0.995,
+    "us_mean": 310.9415567450924,
+    "us_p95": 733.8725874433275,
+    "recall_by_bucket": [
+     1.0,
+     0.9949,
+     0.9778
+    ]
+   }
+  },
+  "graft_build_sum_s": 237.78223599970806,
+  "graft_build_dist_per_point": 7162.982546160348,
+  "brute": {
+   "us_mean": 807.0809076889418,
+   "us_p95": 2937.147610646199
+  },
+  "vp_exact": {
+   "evals_mean": 8924.526666666667,
+   "evals_p95": 35695.54999999989,
+   "frac_mean": 1.0,
+   "frac_by_bucket": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  "min_ef_for_0.999": null
+ },
+ "macros": {
+  "solo/glove/gate2-min-ef": "none",
+  "solo/glove/gate2-vp-frac": 1.0
+ },
+ "notes": "experiment 2: local-search cost on the size-biased workload."
+}

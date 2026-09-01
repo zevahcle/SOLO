@@ -1,0 +1,103 @@
+{
+ "timestamp": "2026-08-27T23:24:52-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "bounded assignment b=8, verify-all, from prebuilt artifact",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-100M",
+  "n": 100000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 8,
+  "ks_grid": [
+   32,
+   64,
+   128,
+   256
+  ],
+  "reps": 3,
+  "threads": "all(64)",
+  "queries": 10000,
+  "source": "<data>"
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 32,
+    "recall": 0.926,
+    "qps": 143.7,
+    "qps_min": 138.4,
+    "qps_max": 143.8,
+    "stage_s": {
+     "route": 0.36,
+     "gather_py": 68.09,
+     "verify": 3.82,
+     "cand_mean": 19812
+    }
+   },
+   {
+    "k_s": 64,
+    "recall": 0.9675,
+    "qps": 70.1,
+    "qps_min": 67.6,
+    "qps_max": 71.7,
+    "stage_s": {
+     "route": 0.51,
+     "gather_py": 132.09,
+     "verify": 6.9,
+     "cand_mean": 36204
+    }
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9869,
+    "qps": 35.4,
+    "qps_min": 35.0,
+    "qps_max": 35.4,
+    "stage_s": {
+     "route": 0.96,
+     "gather_py": 269.53,
+     "verify": 11.98,
+     "cand_mean": 65405
+    }
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9953,
+    "qps": 18.5,
+    "qps_min": 17.7,
+    "qps_max": 18.6,
+    "stage_s": {
+     "route": 1.86,
+     "gather_py": 518.95,
+     "verify": 21.09,
+     "cand_mean": 116696
+    }
+   }
+  ],
+  "note": "python gather timed separately (stage_s); machine server"
+ },
+ "macros": {
+  "solo/deep-100M/server-scan-recall-b8@ks32": 0.926,
+  "solo/deep-100M/server-scan-recall-b8@ks64": 0.9675,
+  "solo/deep-100M/server-scan-recall-b8@ks128": 0.9869,
+  "solo/deep-100M/server-scan-recall-b8@ks256": 0.9953,
+  "solo/deep-100M/server-scan-qps-b8@ks32": 143.7,
+  "solo/deep-100M/server-scan-qps-b8@ks64": 70.1,
+  "solo/deep-100M/server-scan-qps-b8@ks128": 35.4,
+  "solo/deep-100M/server-scan-qps-b8@ks256": 18.5
+ },
+ "notes": "experiment 4 deep-100M scan regime on server (64 threads)."
+}

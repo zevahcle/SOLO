@@ -1,0 +1,109 @@
+{
+ "timestamp": "2026-08-27T13:35:40-0700",
+ "system": {
+  "name": "misi2-sim",
+  "variant": "perfect-local-index",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {
+  "nq": 2000,
+  "gt": "ann-benchmarks true 10-NN"
+ },
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "inner": "graft",
+  "ks_grid": [
+   16,
+   32,
+   64,
+   128
+  ],
+  "k": 10,
+  "nq": 2000,
+  "local_search": "brute (exhaustive)"
+ },
+ "seed": 1,
+ "results": {
+  "build_s": 86.1,
+  "query_loop_s": 361.2,
+  "n": 1183514,
+  "m": 23670,
+  "list_len_mean": 3200.037853823405,
+  "list_len_p95": 8569.199999999997,
+  "list_len_max": 154050,
+  "localtopk_merge_mismatch": "0/50",
+  "per_ks": {
+   "16": {
+    "recall": 0.927,
+    "cand_dup_mean": 146974.7745,
+    "cand_dup_p95": 403658.85,
+    "cand_uniq_mean": 99490.653,
+    "cand_uniq_p95": 261020.24999999994,
+    "redundancy_mean": 1.5305685238123932,
+    "db_frac_touched": 0.0840637736435733,
+    "touched_list_mean": 9185.92340625,
+    "touched_list_p95": 36299.0,
+    "touched_list_max": 154050
+   },
+   "32": {
+    "recall": 0.9684,
+    "cand_dup_mean": 293557.5855,
+    "cand_dup_p95": 779100.9999999998,
+    "cand_uniq_mean": 170226.855,
+    "cand_uniq_p95": 384818.0,
+    "redundancy_mean": 1.7891019189923463,
+    "db_frac_touched": 0.1438317206218093,
+    "touched_list_mean": 9173.674546875,
+    "touched_list_p95": 36299.0,
+    "touched_list_max": 154050
+   },
+   "64": {
+    "recall": 0.9898,
+    "cand_dup_mean": 573685.9395,
+    "cand_dup_p95": 1399336.5499999998,
+    "cand_uniq_mean": 278946.1195,
+    "cand_uniq_p95": 526930.2,
+    "redundancy_mean": 2.1088982206304476,
+    "db_frac_touched": 0.23569313037277123,
+    "touched_list_mean": 8963.8428046875,
+    "touched_list_p95": 34489.0,
+    "touched_list_max": 154050
+   },
+   "128": {
+    "recall": 0.9981,
+    "cand_dup_mean": 1092970.613,
+    "cand_dup_p95": 2408235.099999999,
+    "cand_uniq_mean": 430022.5755,
+    "cand_uniq_p95": 667532.65,
+    "redundancy_mean": 2.5566906742598614,
+    "db_frac_touched": 0.36334388566590675,
+    "touched_list_mean": 8538.8329140625,
+    "touched_list_p95": 32630.0,
+    "touched_list_max": 154050
+   }
+  }
+ },
+ "macros": {
+  "solo/glove/sim-recall@ks16": 0.927,
+  "solo/glove/cand-uniq@ks16": 99490,
+  "solo/glove/sim-recall@ks32": 0.9684,
+  "solo/glove/cand-uniq@ks32": 170226,
+  "solo/glove/sim-recall@ks64": 0.9898,
+  "solo/glove/cand-uniq@ks64": 278946,
+  "solo/glove/sim-recall@ks128": 0.9981,
+  "solo/glove/cand-uniq@ks128": 430022
+ },
+ "notes": "experiment 2a: two-level query simulated with exhaustive within-list search = recall of the architecture with a perfect local index; work accounting for experiment 2."
+}

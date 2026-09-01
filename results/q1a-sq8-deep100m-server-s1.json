@@ -1,0 +1,115 @@
+{
+ "timestamp": "2026-08-28T11:13:08-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "SQ8 screen + f32 refine, RAM, 64 threads",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-100M",
+  "n": 100000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "grid": {
+   "16": [
+    256,
+    384,
+    512
+   ],
+   "32": [
+    128,
+    256
+   ]
+  },
+  "R": 100,
+  "reps": 3,
+  "queries": 10000,
+  "sq": {
+   "lo": -0.5883111953735352,
+   "scale": 0.004571670878167246,
+   "bits": 8
+  }
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "b": 16,
+    "k_s": 256,
+    "R": 100,
+    "recall": 0.9982,
+    "qps": 427.0,
+    "qps_min": 396.1,
+    "qps_max": 431.9,
+    "evals_mean": 193034
+   },
+   {
+    "b": 16,
+    "k_s": 384,
+    "R": 100,
+    "recall": 0.9988,
+    "qps": 319.8,
+    "qps_min": 302.2,
+    "qps_max": 321.5,
+    "evals_mean": 264262
+   },
+   {
+    "b": 16,
+    "k_s": 512,
+    "R": 100,
+    "recall": 0.999,
+    "qps": 252.5,
+    "qps_min": 251.7,
+    "qps_max": 254.5,
+    "evals_mean": 329462
+   },
+   {
+    "b": 32,
+    "k_s": 128,
+    "R": 100,
+    "recall": 0.9981,
+    "qps": 471.4,
+    "qps_min": 461.6,
+    "qps_max": 477.9,
+    "evals_mean": 185856
+   },
+   {
+    "b": 32,
+    "k_s": 256,
+    "R": 100,
+    "recall": 0.9991,
+    "qps": 268.3,
+    "qps_min": 266.7,
+    "qps_max": 271.6,
+    "evals_mean": 311448
+   }
+  ],
+  "baselines": {
+   "hnswlib_sat": "0.9989@540 (ef=4000)",
+   "hnswlib_0.9982": "1103",
+   "misi2_f32": "0.9982@240, 0.9991@148"
+  }
+ },
+ "macros": {
+  "solo/deep100m/sq8-recall-b16ks256": 0.9982,
+  "solo/deep100m/sq8-recall-b16ks384": 0.9988,
+  "solo/deep100m/sq8-recall-b16ks512": 0.999,
+  "solo/deep100m/sq8-recall-b32ks128": 0.9981,
+  "solo/deep100m/sq8-recall-b32ks256": 0.9991,
+  "solo/deep100m/sq8-qps-b16ks256": 427.0,
+  "solo/deep100m/sq8-qps-b16ks384": 319.8,
+  "solo/deep100m/sq8-qps-b16ks512": 252.5,
+  "solo/deep100m/sq8-qps-b32ks128": 471.4,
+  "solo/deep100m/sq8-qps-b32ks256": 268.3
+ },
+ "notes": "Q1a at 100M: SQ8 vs the hnswlib saturation frontier."
+}

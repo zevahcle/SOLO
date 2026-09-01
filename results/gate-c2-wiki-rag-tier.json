@@ -1,0 +1,130 @@
+{
+ "timestamp": "2026-08-30T09:26:25-0700",
+ "system": {
+  "name": "solo-codec",
+  "variant": "company codes, rungs ids-only/affine-f32/affine-i8",
+  "commit": "904152d",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "wikipedia-bge-m3-small",
+  "n": 200000,
+  "d": 1024,
+  "metric": "euclidean(bge)"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "b_grid": [
+   8,
+   16,
+   32
+  ],
+  "k": 10,
+  "queries": {
+   "itest": 10000,
+   "otest": 10000
+  },
+  "gt_base": 1
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "b": 8,
+    "rung": "ids-only",
+    "relMSE": 0.667,
+    "recall_itest": 0.2007,
+    "recall_otest": 0.153,
+    "bytes_per_vec": 12.0
+   },
+   {
+    "b": 8,
+    "rung": "affine-f32",
+    "relMSE": 0.6371,
+    "recall_itest": 0.2334,
+    "recall_otest": 0.1797,
+    "bytes_per_vec": 44.0
+   },
+   {
+    "b": 8,
+    "rung": "affine-i8",
+    "relMSE": 0.6371,
+    "recall_itest": 0.2334,
+    "recall_otest": 0.1797,
+    "bytes_per_vec": 22.0
+   },
+   {
+    "b": 16,
+    "rung": "ids-only",
+    "relMSE": 0.6383,
+    "recall_itest": 0.2594,
+    "recall_otest": 0.2022,
+    "bytes_per_vec": 24.0
+   },
+   {
+    "b": 16,
+    "rung": "affine-f32",
+    "relMSE": 0.6024,
+    "recall_itest": 0.3034,
+    "recall_otest": 0.2433,
+    "bytes_per_vec": 88.0
+   },
+   {
+    "b": 16,
+    "rung": "affine-i8",
+    "relMSE": 0.6024,
+    "recall_itest": 0.3036,
+    "recall_otest": 0.2433,
+    "bytes_per_vec": 42.0
+   },
+   {
+    "b": 32,
+    "rung": "ids-only",
+    "relMSE": 0.6366,
+    "recall_itest": 0.3098,
+    "recall_otest": 0.2474,
+    "bytes_per_vec": 48.0
+   },
+   {
+    "b": 32,
+    "rung": "affine-f32",
+    "relMSE": 0.5788,
+    "recall_itest": 0.3582,
+    "recall_otest": 0.2929,
+    "bytes_per_vec": 176.0
+   },
+   {
+    "b": 32,
+    "rung": "affine-i8",
+    "relMSE": 0.5788,
+    "recall_itest": 0.358,
+    "recall_otest": 0.2928,
+    "bytes_per_vec": 82.0
+   },
+   {
+    "b": null,
+    "rung": "f16",
+    "relMSE": 0.0,
+    "recall_itest": 0.9959,
+    "recall_otest": 0.9951,
+    "bytes_per_vec": 2048
+   },
+   {
+    "b": null,
+    "rung": "SQ8",
+    "relMSE": 0.000521,
+    "recall_itest": 0.9866,
+    "recall_otest": 0.9844,
+    "bytes_per_vec": 1024
+   }
+  ]
+ },
+ "macros": {},
+ "notes": "experiment C2: retrieval recall over reconstructed corpora \u2014 the RAG storage-tier question (the paper), incl. OOD queries."
+}

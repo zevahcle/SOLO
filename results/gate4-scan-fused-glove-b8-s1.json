@@ -1,0 +1,71 @@
+{
+ "timestamp": "2026-08-27T22:38:41-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "b=8, FUSED C++ serve (verify_topk_lists)",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 8,
+  "inner": "graft",
+  "ks_grid": [
+   64,
+   128,
+   256
+  ],
+  "reps": 3,
+  "threads": "all",
+  "queries": 10000
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 64,
+    "recall": 0.8809,
+    "qps": 339.7,
+    "qps_min": 329.1,
+    "qps_max": 421.9,
+    "evals_mean": 59137
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9302,
+    "qps": 238.0,
+    "qps_min": 218.0,
+    "qps_max": 240.0,
+    "evals_mean": 102307
+   },
+   {
+    "k_s": 256,
+    "recall": 0.965,
+    "qps": 140.3,
+    "qps_min": 140.1,
+    "qps_max": 140.9,
+    "evals_mean": 172051
+   }
+  ]
+ },
+ "macros": {
+  "solo/glove/fused-recall@ks64-s1": 0.8809,
+  "solo/glove/fused-recall@ks128-s1": 0.9302,
+  "solo/glove/fused-recall@ks256-s1": 0.965,
+  "solo/glove/fused-qps@ks64-s1": 339.7,
+  "solo/glove/fused-qps@ks128-s1": 238.0,
+  "solo/glove/fused-qps@ks256-s1": 140.3
+ },
+ "notes": "Phase A rerun with the fused serve kernel."
+}

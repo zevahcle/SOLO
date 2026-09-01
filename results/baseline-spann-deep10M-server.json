@@ -1,0 +1,101 @@
+{
+ "timestamp": "2026-08-29T16:03:54-0700",
+ "system": {
+  "name": "spann",
+  "impl": "SPTAG ssdserving (authors' AE 100M-scale config: Ratio=0.1, ReplicaCount=8, PostingPageLimit=4)",
+  "build": "server",
+  "commit": "904152d",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-10M",
+  "n": 10000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "search_threads": 32,
+  "ResultNum": 10,
+  "TruthResultNum": 10,
+  "SearchInternalResultNum": [
+   16,
+   32,
+   64,
+   128,
+   256,
+   512,
+   1024,
+   2048
+  ],
+  "build_s": {
+   "select_head": 11047,
+   "build_head": 1495,
+   "build_ssd": 608
+  },
+  "store_gb": 24,
+  "queries": 10000,
+  "truth": "our gold.npy converted to SPTAG DEFAULT"
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "SIR": 16,
+    "recall": 0.8095,
+    "qps": 5878.9
+   },
+   {
+    "SIR": 32,
+    "recall": 0.895,
+    "qps": 3005.7
+   },
+   {
+    "SIR": 64,
+    "recall": 0.9501,
+    "qps": 1527.4
+   },
+   {
+    "SIR": 128,
+    "recall": 0.9793,
+    "qps": 774.7
+   },
+   {
+    "SIR": 256,
+    "recall": 0.9921,
+    "qps": 384.2
+   },
+   {
+    "SIR": 512,
+    "recall": 0.9974,
+    "qps": 193.2
+   },
+   {
+    "SIR": 1024,
+    "recall": 0.9993,
+    "qps": 99.0
+   },
+   {
+    "SIR": 2048,
+    "recall": 0.9998,
+    "qps": 50.0
+   }
+  ],
+  "note": "served from page cache (1.5TB RAM) - same-machine RAM-comparable numbers; recall by SPTAG's own evaluator against our GT"
+ },
+ "macros": {
+  "solo/deep10m/spann-recall-sir16": 0.8095,
+  "solo/deep10m/spann-recall-sir32": 0.895,
+  "solo/deep10m/spann-recall-sir64": 0.9501,
+  "solo/deep10m/spann-recall-sir128": 0.9793,
+  "solo/deep10m/spann-recall-sir256": 0.9921,
+  "solo/deep10m/spann-recall-sir512": 0.9974,
+  "solo/deep10m/spann-recall-sir1024": 0.9993,
+  "solo/deep10m/spann-recall-sir2048": 0.9998
+ },
+ "notes": "SPANN baseline, Deep-10M, server. 100M build still running."
+}

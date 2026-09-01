@@ -1,0 +1,87 @@
+{
+ "timestamp": "2026-08-28T16:04:17-0700",
+ "system": {
+  "name": "misi2-uniform",
+  "variant": "depth-2, tau=4096, alpha'=0.02, b'=8, rank assignment, NO GRAPHS",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "tau": 4096,
+  "alpha_local": 0.02,
+  "b_local": 8,
+  "grid": [
+   [
+    128,
+    16
+   ],
+   [
+    128,
+    32
+   ]
+  ],
+  "reps": 3,
+  "queries": 10000,
+  "leaves": 814872,
+  "leaf_postings": 354368423
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 128,
+    "ks_local": 16,
+    "b_local": 8,
+    "recall": 0.9973,
+    "qps": 66.7,
+    "qps_min": 62.6,
+    "qps_max": 85.8,
+    "stage_s": {
+     "route": 0.96,
+     "local_route_py": 5.98,
+     "serve": 109.65,
+     "evals_mean": 308999
+    }
+   },
+   {
+    "k_s": 128,
+    "ks_local": 32,
+    "b_local": 8,
+    "recall": 0.9978,
+    "qps": 51.7,
+    "qps_min": 50.8,
+    "qps_max": 53.2,
+    "stage_s": {
+     "route": 2.07,
+     "local_route_py": 7.58,
+     "serve": 178.37,
+     "evals_mean": 358049
+    }
+   }
+  ],
+  "baselines": {
+   "graph_hybrid": "0.9869@94 (ks64/ef160), 0.9976@35 (ks128/ef320)",
+   "h1_composed_est": "0.9901-0.9903 at ks=64"
+  }
+ },
+ "macros": {
+  "solo/glove/h2-recall-ks128ksl16": 0.9973,
+  "solo/glove/h2-recall-ks128ksl32": 0.9978,
+  "solo/glove/h2-qps-ks128ksl16": 66.7,
+  "solo/glove/h2-qps-ks128ksl32": 51.7
+ },
+ "notes": "experiment H2: the uniform recursive design end to end - one primitive, scanned leaves, graphs retired."
+}

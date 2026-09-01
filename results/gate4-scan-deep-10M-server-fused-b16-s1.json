@@ -1,0 +1,82 @@
+{
+ "timestamp": "2026-08-28T06:02:28-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "b=16, FUSED C++ serve",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-10M",
+  "n": 10000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 16,
+  "ks_grid": [
+   64,
+   128,
+   256
+  ],
+  "reps": 3,
+  "threads": "all(64)",
+  "queries": 10000
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 64,
+    "recall": 0.9948,
+    "qps": 1336.7,
+    "qps_min": 1322.8,
+    "qps_max": 1343.4,
+    "stage_s": {
+     "route": 0.29,
+     "serve": 7.27,
+     "evals_mean": 48219
+    }
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9985,
+    "qps": 773.3,
+    "qps_min": 763.7,
+    "qps_max": 774.3,
+    "stage_s": {
+     "route": 0.51,
+     "serve": 12.59,
+     "evals_mean": 81012
+    }
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9994,
+    "qps": 459.6,
+    "qps_min": 451.7,
+    "qps_max": 462.0,
+    "stage_s": {
+     "route": 0.93,
+     "serve": 20.83,
+     "evals_mean": 134305
+    }
+   }
+  ]
+ },
+ "macros": {
+  "solo/deep-10M/server-fused-recall-b16@ks64": 0.9948,
+  "solo/deep-10M/server-fused-recall-b16@ks128": 0.9985,
+  "solo/deep-10M/server-fused-recall-b16@ks256": 0.9994,
+  "solo/deep-10M/server-fused-qps-b16@ks64": 1336.7,
+  "solo/deep-10M/server-fused-qps-b16@ks128": 773.3,
+  "solo/deep-10M/server-fused-qps-b16@ks256": 459.6
+ },
+ "notes": "experiment 4 deep-10M fused scan serve on server (64 threads)."
+}

@@ -1,0 +1,199 @@
+{
+ "timestamp": "2026-08-27T14:12:19-0700",
+ "system": {
+  "name": "misi2-local",
+  "variant": "hub param duel + composed",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "ks": 64,
+  "k": 10,
+  "efs": [
+   80,
+   160,
+   320,
+   640,
+   1280
+  ],
+  "configs": {
+   "A-small": {
+    "T": 8,
+    "harvest": 200,
+    "alpha": 1.0,
+    "seed": 1
+   },
+   "B-hard": {
+    "T": 16,
+    "harvest": 400,
+    "alpha": 1.2,
+    "seed": 1
+   }
+  },
+  "hub_threshold": 16000,
+  "buckets": [
+   [
+    0,
+    4000
+   ],
+   [
+    4000,
+    16000
+   ],
+   [
+    16000,
+    1073741824
+   ]
+  ]
+ },
+ "seed": 1,
+ "results": {
+  "hub_pairs": 54,
+  "distinct_hubs": 48,
+  "duel": {
+   "A-small": {
+    "build_s": 266.5,
+    "build_evals_per_point": 9485.4,
+    "ef": {
+     "80": {
+      "recall": 0.8574,
+      "us": 748
+     },
+     "160": {
+      "recall": 0.9444,
+      "us": 580
+     },
+     "320": {
+      "recall": 0.9778,
+      "us": 944
+     },
+     "640": {
+      "recall": 0.9907,
+      "us": 2150
+     },
+     "1280": {
+      "recall": 0.9981,
+      "us": 3391
+     }
+    }
+   },
+   "B-hard": {
+    "build_s": 529.5,
+    "build_evals_per_point": 23597.7,
+    "ef": {
+     "80": {
+      "recall": 0.8259,
+      "us": 676
+     },
+     "160": {
+      "recall": 0.9111,
+      "us": 565
+     },
+     "320": {
+      "recall": 0.9722,
+      "us": 863
+     },
+     "640": {
+      "recall": 0.987,
+      "us": 1875
+     },
+     "1280": {
+      "recall": 0.9944,
+      "us": 1925
+     }
+    }
+   }
+  },
+  "coverage": 0.9903,
+  "j_distribution": {
+   "1": 503,
+   "2": 689,
+   "3": 918,
+   "4": 942,
+   "5": 984,
+   "6": 998,
+   "7": 820,
+   "8": 829,
+   "9": 846,
+   "10": 771,
+   "11": 784,
+   "12": 714,
+   "13": 670,
+   "14": 606,
+   "15": 576,
+   "16": 553,
+   "17": 507,
+   "18": 469,
+   "19": 460,
+   "20": 396,
+   "21": 422,
+   "22": 367,
+   "23": 338,
+   "24": 334,
+   "25": 308,
+   "26": 304,
+   "27": 277,
+   "28": 242,
+   "29": 229,
+   "30": 223,
+   "31": 226,
+   "32": 219,
+   "33": 185,
+   "34": 178,
+   "35": 153,
+   "36": 181,
+   "37": 177,
+   "38": 150,
+   "39": 158,
+   "40": 142,
+   "41": 129,
+   "42": 121,
+   "43": 113,
+   "44": 78,
+   "45": 96,
+   "46": 68,
+   "47": 61,
+   "48": 50,
+   "49": 46,
+   "50": 43,
+   "51": 39,
+   "52": 23,
+   "53": 31,
+   "54": 22,
+   "55": 12,
+   "56": 13,
+   "57": 5,
+   "58": 3,
+   "59": 5
+  },
+  "composed_estimate": {
+   "A-everywhere@ef160": 0.9898,
+   "A-everywhere@ef320": 0.9901,
+   "A+B-hubs@ef160": 0.9896,
+   "A+B-hubs@ef320": 0.9901,
+   "A+B-hubs@ef640": 0.9902
+  },
+  "composed_note": "independence across lists ASSUMED - optimistic; experiment 4 measures truly"
+ },
+ "macros": {
+  "solo/glove/composed-est-A-everywhere@ef160": 0.9898,
+  "solo/glove/composed-est-A-everywhere@ef320": 0.9901,
+  "solo/glove/composed-est-A+B-hubs@ef160": 0.9896,
+  "solo/glove/composed-est-A+B-hubs@ef320": 0.9901,
+  "solo/glove/composed-est-A+B-hubs@ef640": 0.9902
+ },
+ "notes": "experiment 2b: GloVe hub params + composed-recall estimate."
+}

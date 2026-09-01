@@ -1,0 +1,58 @@
+{
+ "timestamp": "2026-08-28T12:55:50-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "b=16 SQ8 leaf blocks on NVMe, pread serving, router-only resident",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-100M",
+  "n": 100000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 16,
+  "ks_grid": [
+   256,
+   512
+  ],
+  "R": 100,
+  "cap": "1G",
+  "threads": 16,
+  "queries": 1000,
+  "protocol": "E5"
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 256,
+    "recall": 0.9965,
+    "qps_cold": 19.8,
+    "qps_warm": 19.3,
+    "io_mb_per_query": 37.1
+   },
+   {
+    "k_s": 512,
+    "recall": 0.9979,
+    "qps_cold": 10.2,
+    "qps_warm": 10.0,
+    "io_mb_per_query": 71.4
+   }
+  ],
+  "cgroup_peak_gb": 1.0
+ },
+ "macros": {
+  "solo/deep100m/q1b-1G-qps-warm@ks256": 19.3,
+  "solo/deep100m/q1b-1G-qps-warm@ks512": 10.0
+ },
+ "notes": "Q1b: the memory claim made operational - quantized leaf blocks + explicit IO; recall == RAM path by kernel parity."
+}

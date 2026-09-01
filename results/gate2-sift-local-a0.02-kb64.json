@@ -1,0 +1,134 @@
+{
+ "timestamp": "2026-08-27T13:49:42-0700",
+ "system": {
+  "name": "misi2-local",
+  "candidates": "graft/vp/brute",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "sift",
+  "n": 1000000,
+  "d": 128,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "ks": 64,
+  "k": 10,
+  "npairs": 400,
+  "vp_pairs": 150,
+  "efs": [
+   10,
+   20,
+   40,
+   80,
+   160,
+   320
+  ],
+  "leaf": 32,
+  "graft_params": {
+   "T": 8,
+   "harvest": 200,
+   "seed": 1
+  },
+  "sampling": "query-driven (query, touched-list) pairs = size-biased"
+ },
+ "seed": 1,
+ "results": {
+  "pairs": 400,
+  "distinct_lists": 397,
+  "list_size_min": 138,
+  "list_size_max": 21917,
+  "graft": {
+   "10": {
+    "recall": 0.82975,
+    "us_mean": 35.796132797258906,
+    "us_p95": 101.23301617568356,
+    "recall_by_bucket": [
+     0.8621,
+     0.8037,
+     0.8333
+    ]
+   },
+   "20": {
+    "recall": 0.9332500000000001,
+    "us_mean": 24.723356473259628,
+    "us_p95": 43.44612825661895,
+    "recall_by_bucket": [
+     0.9569,
+     0.9161,
+     0.8889
+    ]
+   },
+   "40": {
+    "recall": 0.9815,
+    "us_mean": 35.089888697257265,
+    "us_p95": 57.887504226528094,
+    "recall_by_bucket": [
+     0.9908,
+     0.9747,
+     0.9667
+    ]
+   },
+   "80": {
+    "recall": 0.9965,
+    "us_mean": 52.09517403272912,
+    "us_p95": 75.0018196413293,
+    "recall_by_bucket": [
+     0.9994,
+     0.994,
+     1.0
+    ]
+   },
+   "160": {
+    "recall": 0.9997499999999999,
+    "us_mean": 78.83594058512244,
+    "us_p95": 113.54794114595275,
+    "recall_by_bucket": [
+     1.0,
+     0.9995,
+     1.0
+    ]
+   },
+   "320": {
+    "recall": 0.9997499999999999,
+    "us_mean": 119.86928584519774,
+    "us_p95": 183.29404556425288,
+    "recall_by_bucket": [
+     1.0,
+     0.9995,
+     1.0
+    ]
+   }
+  },
+  "graft_build_sum_s": 36.25120599960792,
+  "graft_build_dist_per_point": 3024.531851890733,
+  "brute": {
+   "us_mean": 306.2414667510893,
+   "us_p95": 717.9704989539459
+  },
+  "vp_exact": {
+   "evals_mean": 5305.8,
+   "evals_p95": 13081.649999999998,
+   "frac_mean": 0.9977751243386227,
+   "frac_by_bucket": [
+    1.0,
+    0.996,
+    1.0
+   ]
+  },
+  "min_ef_for_0.999": 160
+ },
+ "macros": {
+  "solo/sift/gate2-min-ef": 160,
+  "solo/sift/gate2-vp-frac": 0.998
+ },
+ "notes": "experiment 2: local-search cost on the size-biased workload."
+}

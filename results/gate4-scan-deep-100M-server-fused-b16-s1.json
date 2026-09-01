@@ -1,0 +1,112 @@
+{
+ "timestamp": "2026-08-28T06:42:31-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "b=16, FUSED C++ serve, from prebuilt artifact",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-100M",
+  "n": 100000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 16,
+  "ks_grid": [
+   64,
+   128,
+   256,
+   384,
+   512
+  ],
+  "reps": 3,
+  "threads": "all(64)",
+  "queries": 10000
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 64,
+    "recall": 0.9875,
+    "qps": 711.7,
+    "qps_min": 679.8,
+    "qps_max": 713.7,
+    "stage_s": {
+     "route": 0.59,
+     "serve": 14.12,
+     "evals_mean": 63549
+    }
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9953,
+    "qps": 425.8,
+    "qps_min": 400.6,
+    "qps_max": 433.4,
+    "stage_s": {
+     "route": 0.94,
+     "serve": 22.13,
+     "evals_mean": 111563
+    }
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9982,
+    "qps": 239.9,
+    "qps_min": 234.1,
+    "qps_max": 248.1,
+    "stage_s": {
+     "route": 1.76,
+     "serve": 39.93,
+     "evals_mean": 193034
+    }
+   },
+   {
+    "k_s": 384,
+    "recall": 0.9988,
+    "qps": 175.4,
+    "qps_min": 171.9,
+    "qps_max": 178.2,
+    "stage_s": {
+     "route": 2.51,
+     "serve": 55.67,
+     "evals_mean": 264262
+    }
+   },
+   {
+    "k_s": 512,
+    "recall": 0.999,
+    "qps": 139.1,
+    "qps_min": 138.0,
+    "qps_max": 144.4,
+    "stage_s": {
+     "route": 3.24,
+     "serve": 69.21,
+     "evals_mean": 329462
+    }
+   }
+  ]
+ },
+ "macros": {
+  "solo/deep-100M/server-fused-recall-b16@ks64": 0.9875,
+  "solo/deep-100M/server-fused-recall-b16@ks128": 0.9953,
+  "solo/deep-100M/server-fused-recall-b16@ks256": 0.9982,
+  "solo/deep-100M/server-fused-recall-b16@ks384": 0.9988,
+  "solo/deep-100M/server-fused-recall-b16@ks512": 0.999,
+  "solo/deep-100M/server-fused-qps-b16@ks64": 711.7,
+  "solo/deep-100M/server-fused-qps-b16@ks128": 425.8,
+  "solo/deep-100M/server-fused-qps-b16@ks256": 239.9,
+  "solo/deep-100M/server-fused-qps-b16@ks384": 175.4,
+  "solo/deep-100M/server-fused-qps-b16@ks512": 139.1
+ },
+ "notes": "experiment 4 deep-100M fused scan serve on server (64 threads)."
+}

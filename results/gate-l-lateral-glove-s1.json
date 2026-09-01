@@ -1,0 +1,82 @@
+{
+ "timestamp": "2026-08-29T12:45:24-0700",
+ "system": {
+  "name": "solo-lateral",
+  "variant": "flat router over leaf representatives (lateral densification)",
+  "commit": "904152d",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 64,
+  "tau": 4096,
+  "alpha_local": 0.02,
+  "b_local": 8,
+  "ks_flat_grid": [
+   256,
+   512,
+   1024,
+   2048
+  ],
+  "reps": 3,
+  "queries": 10000,
+  "leaves": 814872,
+  "router_points": 814872
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "ks_flat": 256,
+    "recall": 0.9715,
+    "qps": 172.8,
+    "qps_min": 168.9,
+    "qps_max": 175.6,
+    "evals_mean": 123388
+   },
+   {
+    "ks_flat": 512,
+    "recall": 0.9891,
+    "qps": 102.1,
+    "qps_min": 99.0,
+    "qps_max": 103.7,
+    "evals_mean": 196237
+   },
+   {
+    "ks_flat": 1024,
+    "recall": 0.9969,
+    "qps": 61.1,
+    "qps_min": 56.2,
+    "qps_max": 63.3,
+    "evals_mean": 299934
+   },
+   {
+    "ks_flat": 2048,
+    "recall": 0.9992,
+    "qps": 37.8,
+    "qps_min": 36.6,
+    "qps_max": 38.5,
+    "evals_mean": 438417
+   }
+  ],
+  "vertical_reference": "H2: 0.9899@90 (evals ~228k, ks=64/ks'=32); 0.9978@52 (evals ~358k, ks=128/ks'=32)"
+ },
+ "macros": {
+  "solo/glove/lateral-recall-ksf256": 0.9715,
+  "solo/glove/lateral-recall-ksf512": 0.9891,
+  "solo/glove/lateral-recall-ksf1024": 0.9969,
+  "solo/glove/lateral-recall-ksf2048": 0.9992
+ },
+ "notes": "experiment L (the paper): lateral vs vertical at equal leaf structure and (on this machine) equal resident vector mass."
+}

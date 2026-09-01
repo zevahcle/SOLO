@@ -1,0 +1,67 @@
+{
+ "timestamp": "2026-08-28T08:16:10-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "b=16, FUSED C++ serve",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-10M",
+  "n": 10000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 16,
+  "ks_grid": [
+   64,
+   128,
+   256
+  ],
+  "reps": 3,
+  "threads": "all(64)",
+  "queries": 10000
+ },
+ "seed": 5,
+ "results": {
+  "rows": [
+   {
+    "k_s": 64,
+    "recall": 0.995,
+    "qps": 1298.1,
+    "qps_min": 1282.1,
+    "qps_max": 1317.4,
+    "evals_mean": 48179
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9985,
+    "qps": 769.5,
+    "qps_min": 768.3,
+    "qps_max": 781.3,
+    "evals_mean": 80892
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9993,
+    "qps": 466.1,
+    "qps_min": 449.4,
+    "qps_max": 468.2,
+    "evals_mean": 133974
+   }
+  ]
+ },
+ "macros": {
+  "solo/deep10m/server-fused-recall-b16@ks64-s5": 0.995,
+  "solo/deep10m/server-fused-recall-b16@ks128-s5": 0.9985,
+  "solo/deep10m/server-fused-recall-b16@ks256-s5": 0.9993
+ },
+ "notes": "5-seed sweep row (seeds 2-5; seed 1 in the same-named -s1 manifest)."
+}

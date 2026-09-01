@@ -1,0 +1,93 @@
+{
+ "timestamp": "2026-08-31T07:40:38-0700",
+ "system": {
+  "name": "spann",
+  "impl": "SPTAG ssdserving, authors' AE 100M config (Ratio=0.1, ReplicaCount=8, PostingPageLimit=4), Float path",
+  "commit": "904152d",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-100M",
+  "n": 100000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "search_threads": 32,
+  "ResultNum": 10,
+  "TruthResultNum": 10,
+  "SIR": [
+   64,
+   128,
+   256,
+   512,
+   1024,
+   2048,
+   4096
+  ],
+  "build_s": {
+   "select_head": 174122,
+   "build_head": 25586,
+   "build_ssd": 7410,
+   "total_h": 57.5
+  },
+  "store_gb": 235,
+  "queries": 10000
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "SIR": 64,
+    "recall": 0.9102,
+    "qps": 1418.6
+   },
+   {
+    "SIR": 128,
+    "recall": 0.9539,
+    "qps": 726.2
+   },
+   {
+    "SIR": 256,
+    "recall": 0.9783,
+    "qps": 366.3
+   },
+   {
+    "SIR": 512,
+    "recall": 0.9916,
+    "qps": 181.9
+   },
+   {
+    "SIR": 1024,
+    "recall": 0.9967,
+    "qps": 93.5
+   },
+   {
+    "SIR": 2048,
+    "recall": 0.9989,
+    "qps": 47.3
+   },
+   {
+    "SIR": 4096,
+    "recall": 0.9996,
+    "qps": 23.7
+   }
+  ],
+  "note": "store served from page cache (1.5TB RAM); recall by SPTAG evaluator vs our float GT"
+ },
+ "macros": {
+  "solo/deep100m/spann-recall-sir64": 0.9102,
+  "solo/deep100m/spann-recall-sir128": 0.9539,
+  "solo/deep100m/spann-recall-sir256": 0.9783,
+  "solo/deep100m/spann-recall-sir512": 0.9916,
+  "solo/deep100m/spann-recall-sir1024": 0.9967,
+  "solo/deep100m/spann-recall-sir2048": 0.9989,
+  "solo/deep100m/spann-recall-sir4096": 0.9996
+ },
+ "notes": "SPANN baseline Deep-100M complete; float path build 57.5h."
+}

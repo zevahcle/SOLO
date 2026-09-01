@@ -1,0 +1,103 @@
+{
+ "timestamp": "2026-08-27T21:03:14-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "bounded assignment b=8, verify-all",
+  "commit": "49a8727",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-10M",
+  "n": 10000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "server-64t",
+  "machine": "x86_64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 8,
+  "ks_grid": [
+   32,
+   64,
+   128,
+   256
+  ],
+  "reps": 3,
+  "threads": "all(64)",
+  "queries": 10000,
+  "source": "refit kb=64"
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 32,
+    "recall": 0.9605,
+    "qps": 170.2,
+    "qps_min": 169.3,
+    "qps_max": 170.3,
+    "stage_s": {
+     "route": 0.17,
+     "gather_py": 55.81,
+     "verify": 3.1,
+     "cand_mean": 16441
+    }
+   },
+   {
+    "k_s": 64,
+    "recall": 0.9846,
+    "qps": 87.6,
+    "qps_min": 86.7,
+    "qps_max": 87.6,
+    "stage_s": {
+     "route": 0.27,
+     "gather_py": 108.62,
+     "verify": 5.2,
+     "cand_mean": 29018
+    }
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9952,
+    "qps": 44.0,
+    "qps_min": 44.0,
+    "qps_max": 44.1,
+    "stage_s": {
+     "route": 0.5,
+     "gather_py": 218.27,
+     "verify": 8.71,
+     "cand_mean": 50514
+    }
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9982,
+    "qps": 23.7,
+    "qps_min": 23.1,
+    "qps_max": 23.8,
+    "stage_s": {
+     "route": 0.91,
+     "gather_py": 406.86,
+     "verify": 13.95,
+     "cand_mean": 86810
+    }
+   }
+  ],
+  "note": "python gather timed separately (stage_s); machine server"
+ },
+ "macros": {
+  "solo/deep-10M/server-scan-recall-b8@ks32": 0.9605,
+  "solo/deep-10M/server-scan-recall-b8@ks64": 0.9846,
+  "solo/deep-10M/server-scan-recall-b8@ks128": 0.9952,
+  "solo/deep-10M/server-scan-recall-b8@ks256": 0.9982,
+  "solo/deep-10M/server-scan-qps-b8@ks32": 170.2,
+  "solo/deep-10M/server-scan-qps-b8@ks64": 87.6,
+  "solo/deep-10M/server-scan-qps-b8@ks128": 44.0,
+  "solo/deep-10M/server-scan-qps-b8@ks256": 23.7
+ },
+ "notes": "experiment 4 deep-10M scan regime on server (64 threads)."
+}

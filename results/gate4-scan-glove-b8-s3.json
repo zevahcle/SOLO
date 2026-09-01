@@ -1,0 +1,70 @@
+{
+ "timestamp": "2026-08-27T16:11:18-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "bounded assignment b=8, verify-all",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "glove",
+  "n": 1183514,
+  "d": 200,
+  "metric": "angular"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "k_b": 8,
+  "inner": "graft",
+  "scoring": "count",
+  "C": 200000,
+  "reps": 3,
+  "threads": "all",
+  "ks_grid": [
+   64,
+   128,
+   256
+  ],
+  "queries": 10000
+ },
+ "seed": 3,
+ "results": {
+  "rows": [
+   {
+    "k_s": 64,
+    "recall": 0.8831,
+    "qps": 228.1,
+    "qps_min": 213.7,
+    "qps_max": 228.4
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9302,
+    "qps": 135.8,
+    "qps_min": 134.8,
+    "qps_max": 137.3
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9593,
+    "qps": 87.6,
+    "qps_min": 86.4,
+    "qps_max": 87.6
+   }
+  ],
+  "build_s": 61.7,
+  "latency_ms_p50": 22.834,
+  "latency_ms_p95": 48.976,
+  "latency_at_ks": 128
+ },
+ "macros": {
+  "solo/glove/scan-recall@ks256-s3": 0.9593,
+  "solo/glove/scan-qps@ks256-s3": 87.6
+ },
+ "notes": "experiment 4 phase A: scan-regime prototype = misi engine at k_b=8, C past candidate count (verify-all). Recall == coverage(b, ks); no per-list indexes."
+}

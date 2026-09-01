@@ -1,0 +1,112 @@
+{
+ "timestamp": "2026-08-27T18:42:28-0700",
+ "system": {
+  "name": "misi2-scan",
+  "variant": "bounded assignment b=16, verify-all, from prebuilt kb=64 artifact (rank truncation)",
+  "commit": "8cad9ba",
+  "dirty": true
+ },
+ "dataset": {
+  "name": "deep-10M",
+  "n": 10000000,
+  "d": 96,
+  "metric": "euclidean"
+ },
+ "queries": {},
+ "hardware": {
+  "host": "laptop-10c",
+  "machine": "arm64"
+ },
+ "config": {
+  "alpha": 0.02,
+  "b": 16,
+  "artifact_kb": 64,
+  "ks_grid": [
+   32,
+   64,
+   128,
+   256
+  ],
+  "reps": 3,
+  "threads": "all",
+  "queries": 10000,
+  "router": "graft T16/h400 seed42 on stored sample"
+ },
+ "seed": 1,
+ "results": {
+  "rows": [
+   {
+    "k_s": 32,
+    "recall": 0.9846,
+    "qps": 444.9,
+    "qps_min": 441.3,
+    "qps_max": 445.1,
+    "latency_ms_p50": 4.86,
+    "latency_ms_p95": 9.67,
+    "stage_s": {
+     "route": 0.3,
+     "gather_py": 15.62,
+     "verify": 6.74,
+     "cand_mean": 28267
+    }
+   },
+   {
+    "k_s": 64,
+    "recall": 0.9948,
+    "qps": 237.7,
+    "qps_min": 237.5,
+    "qps_max": 240.0,
+    "latency_ms_p50": 7.95,
+    "latency_ms_p95": 15.08,
+    "stage_s": {
+     "route": 0.29,
+     "gather_py": 30.03,
+     "verify": 11.34,
+     "cand_mean": 48219
+    }
+   },
+   {
+    "k_s": 128,
+    "recall": 0.9985,
+    "qps": 116.3,
+    "qps_min": 115.7,
+    "qps_max": 127.0,
+    "latency_ms_p50": 13.19,
+    "latency_ms_p95": 22.53,
+    "stage_s": {
+     "route": 0.7,
+     "gather_py": 63.01,
+     "verify": 22.74,
+     "cand_mean": 81012
+    }
+   },
+   {
+    "k_s": 256,
+    "recall": 0.9994,
+    "qps": 66.4,
+    "qps_min": 64.4,
+    "qps_max": 69.1,
+    "latency_ms_p50": 22.53,
+    "latency_ms_p95": 35.65,
+    "stage_s": {
+     "route": 2.29,
+     "gather_py": 108.62,
+     "verify": 33.9,
+     "cand_mean": 134305
+    }
+   }
+  ],
+  "note": "gather is a python loop, timed separately in stage_s; qps machine = laptop (E4 baseline was server)"
+ },
+ "macros": {
+  "solo/deep10m/scan-recall@ks32": 0.9846,
+  "solo/deep10m/scan-recall@ks64": 0.9948,
+  "solo/deep10m/scan-recall@ks128": 0.9985,
+  "solo/deep10m/scan-recall@ks256": 0.9994,
+  "solo/deep10m/scan-qps@ks32": 444.9,
+  "solo/deep10m/scan-qps@ks64": 237.7,
+  "solo/deep10m/scan-qps@ks128": 116.3,
+  "solo/deep10m/scan-qps@ks256": 66.4
+ },
+ "notes": "experiment 4 Deep-10M scan regime on laptop; b derived by truncating the E4 artifact signatures - zero rebuild."
+}
